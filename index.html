@@ -1,0 +1,35 @@
+<html>
+    <title>Give</title>
+    <body style="margin: 30px;">
+        <div onload="localStorage.removeItem(obj1)"> 
+        <form >
+            <label>Nome</label><br>
+            <input type="text" size="50px" id="in1" name="in1"><br>
+            <label>Cognome</label><br>
+            <input type="text" size="50px" id="in2"> <br>
+            <label>Età</label><br>
+            <input type="number" min="0" max="100" id="in3"> <br>
+            <input type="button" id="invio" value="Invio" onclick="execute()" >
+            <input type="reset" id="reset" value="Reset" onclick="reset()">
+            <script>
+                function execute(){
+                    var name=document.getElementById("in1").value
+                    var surname=document.getElementById("in2").value
+                    var age=document.getElementById("in3").value
+                    const obj = {name:name, surname:surname, age:age};
+                    console.log(obj)
+                    let text=JSON.stringify(obj)
+                    localStorage.setItem("obj", text);
+                    window.location.href = "Passed.html"
+                }
+                
+                function reset(){
+                    localStorage.removeItem("obj")
+                }
+            </script>
+        </form>
+        </div>
+        
+    </body>
+    
+</html>
