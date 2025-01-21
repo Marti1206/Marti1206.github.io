@@ -1,0 +1,50 @@
+<definitions name="HelloService"
+             targetNamespace="http://localhost/soap/hello"
+             xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:tns="http://localhost/soap/hello"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+    <message name="SommaRequest">
+        <part name="numero1" type="xsd:float"/>
+        <part name="numero2" type="xsd:float"/>
+    </message>
+
+    <message name="SommaResponse">
+        <part name="result" type="xsd:float"/>
+    </message>
+
+    <portType name="Hello_PortType">
+        <operation name="somma">
+            <input message="tns:SommaRequest"/>
+            <output message="tns:SommaResponse"/>
+        </operation>
+    </portType>
+
+    <binding name="Hello_Binding" type="tns:Hello_PortType">
+        <soap:binding style="rpc"
+                      transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="somma">
+            <soap:operation soapAction="somma"/>
+            <input>
+                <soap:body
+                        encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                        namespace="urn:examples:helloservice"
+                        use="encoded"/>
+            </input>
+            <output>
+                <soap:body
+                        encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                        namespace="urn:examples:helloservice"
+                        use="encoded"/>
+            </output>
+        </operation>
+    </binding>
+
+    <service name="Hello_Service">
+        <documentation>Server</documentation>
+        <port binding="tns:Hello_Binding" name="Hello_Port">
+            <soap:address location="http://localhost/soap/server.php"/>
+        </port>
+    </service>
+</definitions>
