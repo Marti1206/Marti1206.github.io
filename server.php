@@ -6,7 +6,7 @@ class HelloService {
 }
 
 $options = ['uri' => 'http://localhost/soap/hello'];
-$server = new SoapServer('http://localhost/soap/test.wsdl', $options);
+$server = new SoapServer('https://marti1206.github.io/test.wsdl', $options);
 $server->setClass('HelloService');
 $server->handle();
 ?>
