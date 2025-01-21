@@ -1,6 +1,6 @@
 <?php
 try {
-    $client = new SoapClient('http://localhost/soap/test.wsdl');
+    $client = new SoapClient('https://marti1206.github.io/test.wsdl');
         //print_r($client->__getFunctions());
 
 
