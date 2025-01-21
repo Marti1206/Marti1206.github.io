@@ -44,7 +44,7 @@
     <service name="Hello_Service">
         <documentation>Server</documentation>
         <port binding="tns:Hello_Binding" name="Hello_Port">
-            <soap:address location="http://localhost/soap/server.php"/>
+            <soap:address location="https://marti1206.github.io/server.php"/>
         </port>
     </service>
 </definitions>
